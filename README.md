@@ -10,12 +10,6 @@ Installation with NPM
 npm install mhash
 
 
-Manual Installation
-===================
-
-    node-waf configure build
-    
-
 Usage
 =====
 <pre>
@@ -82,5 +76,9 @@ Supported Hashing Algorithms
 * snefru256
 
 
+Manual Installation
+===================
 
+    node-waf configure build
+    
 
