@@ -1,8 +1,20 @@
 Description
 ===========
 
-Provides several hashing algorithms for [node.js](http://nodejs.org/) by binding to mhash.
+Provides several hashing algorithms for [node.js](http://nodejs.org/) by binding to [mhash](http://mhash.sourceforge.net/)
 
+
+Installation with NPM
+=====================
+
+npm install mhash
+
+
+Manual Installation
+===================
+
+    node-waf configure build
+    
 
 Usage
 =====
@@ -70,14 +82,5 @@ Supported Hashing Algorithms
 * snefru256
 
 
-Installation with NPM
-=====================
 
-npm install mhash
-
-
-Manual Installation
-===================
-
-    node-waf configure build
 
