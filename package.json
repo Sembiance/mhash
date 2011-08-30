@@ -1,0 +1,12 @@
+{ "name": "mhash",
+  "version": "0.0.1",
+  "author": "Robert Schultz <robert@cosmicrealms.com>",
+  "description": "Provides several hashing algorithms for node.js by binding to mhash. Includes support for 27 different hash algorithms including: md5, md4, md2, sha1, sha256, whirlpool, crc32, etc.",
+  "scripts": { "preinstall": "node-waf configure build" },
+  "main": "./mhash",
+  "engines": { "node": ">0.1.93" },
+  "keywords": [ "hash", "md5", "sha", "crc", "whirlpool", "haval", "ripemd", "gost", "snefru", "alder", "tiger", "crc32", "crc32b", "sha256", "md4", "md2" ],
+  "homepage" : "http://github.com/Sembiance/node-mhash",
+  "licenses": [ { "type": "MIT", "url": "http://github.com/Sembiance/node-mhash/raw/master/LICENSE" } ],
+  "repository": { "type": "git", "url": "http://github.com/Sembiance/node-mhash.git" }
+}
