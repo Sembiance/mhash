@@ -1,6 +1,5 @@
 import Options
-from os import symlink
-from os.path import exists, abspath
+from os.path import abspath
 import os
 
 srcdir = '.'
@@ -35,12 +34,5 @@ def build(bld):
     obj.linkflags = [mhashdir + '/lib/.libs/libmhash.a']
 
 def shutdown():
-  # HACK to get mhash.node out of build directory.
-  # better way to do this?
-  if Options.commands['clean'] or Options.commands['distclean']:
-    os.system("rm mhash.node")
-    if Options.commands['distclean']: os.system("cd deps/mhash && make distclean")
-    if Options.commands['clean']: os.system("cd deps/mhash && make clean")
-  else:
-    if exists('build/default/mhash.node') and not exists('mhash.node'):
-      symlink('build/default/mhash.node', 'mhash.node')
+  if Options.commands['clean']: os.system("cd deps/mhash && make clean")
+  if Options.commands['distclean']: os.system("cd deps/mhash && make distclean")
