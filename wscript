@@ -16,7 +16,7 @@ def configure(conf):
 
   # configure mhash
   print "Configuring mhash library ..."
-  cmd = "cd deps/mhash && sh configure"
+  cmd = "cd deps/mhash && sh configure --with-CPPFLAGS='-fPIC'"
   if os.system(cmd) != 0:
     conf.fatal("Configuring mhash failed.")
 
