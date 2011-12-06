@@ -13,6 +13,7 @@ def set_options(opt):
 def configure(conf):
   conf.check_tool('compiler_cxx')
   conf.check_tool('node_addon')
+  conf.env.set_variant("default")
 
   # configure mhash
   print "Configuring mhash library ..."
