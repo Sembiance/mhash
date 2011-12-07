@@ -81,6 +81,7 @@ Supported Hashing Algorithms
 Manual Installation
 ===================
 
+	git clone "https://github.com/Sembiance/node-mhash.git"
+	cd node-mhash
     node-waf configure build
-    
 
