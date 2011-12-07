@@ -1,3 +1,7 @@
+#ifdef __APPLE__
+ #include <stdbool.h>
+#endif
+
 #include <v8.h>
 #include <mhash.h>
 #include <node.h>
