@@ -3,6 +3,8 @@ Description
 
 Provides several hashing algorithms for [node.js](http://nodejs.org/) by binding to [mhash](http://mhash.sourceforge.net/)
 
+NOTE: MacOS X users need to have XCode installed (provides gcc)
+
 
 Installation with NPM
 =====================
