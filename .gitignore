@@ -1,2 +1,5 @@
 .cproject
 .project
+node_modules
+.lock-wscript
+build
