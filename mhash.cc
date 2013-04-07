@@ -11,6 +11,7 @@
 #include <string.h>
 
 using namespace v8;
+using namespace node;
 
 char * convert_to_hex(unsigned char * hash_data, unsigned long len)
 {
@@ -116,13 +117,21 @@ Handle<Value> hash_binding(const Arguments& args)
 	hashid			type=(hashid)-1;
 
 	String::Utf8Value 	name(args[0]->ToString());
-	String::Utf8Value 	data(args[1]->ToString());
-
 	type = get_hash_type_by_name(*name);
 	if(type==(hashid)-1)
 		return Null();
 
-	hashed = hash(type, (unsigned char *)*data, data.length());
+	if(args[1]->IsString())
+	{
+		String::Utf8Value 	data(args[1]->ToString());
+		hashed = hash(type, (unsigned char *)*data, data.length());
+	}
+	else if(Buffer::HasInstance(args[1]))
+	{
+		Handle<Object> data = args[1]->ToObject();
+		hashed = hash(type, (unsigned char *)Buffer::Data(data), Buffer::Length(data));
+	}
+
 	if(!hashed)
 		return Null();
 

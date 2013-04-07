@@ -15,6 +15,12 @@ npm install mhash
 Usage
 =====
 <pre>
+	Syntax: hash(<algo-type>, String || Buffer)
+	First argument is a string, one of the supported algorihms below.
+	Second argument can either be a String or a Buffer.
+</pre>
+
+<pre>
 var hash = require("mhash").hash;
 
 console.log(hash("md2", "testing"));
