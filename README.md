@@ -84,6 +84,14 @@ Supported Hashing Algorithms
 * snefru256
 
 
+Known Issues
+============
+
+The crc32 and crc32b may not be what you expect due the way the mhash library computes these.
+
+See Issue #1 for more details.
+
+
 Manual Installation
 ===================
 
