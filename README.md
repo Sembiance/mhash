@@ -89,7 +89,7 @@ Known Issues
 
 The crc32 and crc32b may not be what you expect due the way the mhash library computes these.
 
-See Issue #1 for more details.
+See [Issue #1](https://github.com/Sembiance/node-mhash/issues/1) for more details.
 
 
 Manual Installation
