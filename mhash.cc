@@ -147,3 +147,7 @@ extern "C" void init(Handle<Object> target)
 
 	target->Set(String::New("hash"), FunctionTemplate::New(hash_binding)->GetFunction());
 }
+
+#ifdef NODE_MODULE
+    NODE_MODULE(mhash, init)
+#endif
