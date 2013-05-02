@@ -8,5 +8,6 @@
   "keywords": [ "hash", "md5", "sha", "crc", "whirlpool", "haval", "ripemd", "gost", "snefru", "alder", "tiger", "crc32", "crc32b", "sha256", "md4", "md2" ],
   "homepage" : "http://github.com/Sembiance/node-mhash",
   "licenses": [ { "type": "MIT", "url": "http://github.com/Sembiance/node-mhash/raw/master/LICENSE" } ],
-  "repository": { "type": "git", "url": "http://github.com/Sembiance/node-mhash.git" }
+  "repository": { "type": "git", "url": "http://github.com/Sembiance/node-mhash.git" },
+  "scripts": { "test": "node test.js" }
 }
