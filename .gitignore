@@ -1,6 +1,5 @@
 .cproject
 .project
 node_modules
-deps
 .lock-wscript
 build
