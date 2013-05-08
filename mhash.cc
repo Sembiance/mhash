@@ -13,6 +13,19 @@
 using namespace v8;
 using namespace node;
 
+void reverse_bytes(unsigned char * start, unsigned long len)
+{
+	unsigned char *lo = start;
+	unsigned char *hi = start + len - 1;
+	unsigned char swap;
+	while(lo<hi)
+	{
+		swap = *lo;
+		*lo++ = *hi;
+		*hi-- = swap;
+	}
+}
+
 char * convert_to_hex(unsigned char * hash_data, unsigned long len)
 {
 	char *	converted;
@@ -34,6 +47,7 @@ char * hash(hashid hashType, unsigned char * data, unsigned long len)
 	MHASH				td;
 	unsigned char * 	hash_data;
 	char *				converted=0;
+	unsigned long		block_size;
 
 	if((td=mhash_init(hashType))==MHASH_FAILED)
 		return 0;
@@ -42,7 +56,10 @@ char * hash(hashid hashType, unsigned char * data, unsigned long len)
 
 	if((hash_data=(unsigned char *)mhash_end(td)))
 	{
-		converted = convert_to_hex(hash_data, mhash_get_block_size(hashType));
+		block_size = mhash_get_block_size(hashType);
+		if(hashType==MHASH_ADLER32)	// Fixes #6
+			reverse_bytes(hash_data, block_size);
+		converted = convert_to_hex(hash_data, block_size);
 		mhash_free(hash_data);
 	}
 
