@@ -1,5 +1,5 @@
 { "name": "mhash",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "author": "Robert Schultz <robert@cosmicrealms.com>",
   "description": "Provides 27 hashing algorithms: md5, md4, md2, sha1, sha256, whirlpool, crc32, etc. MacOS X requires Xcode to be installed.",
   "main": "index",
@@ -8,6 +8,5 @@
   "keywords": [ "hash", "md5", "sha", "crc", "whirlpool", "haval", "ripemd", "gost", "snefru", "alder", "tiger", "crc32", "crc32b", "sha256", "md4", "md2" ],
   "homepage" : "http://github.com/Sembiance/node-mhash",
   "licenses": [ { "type": "MIT", "url": "http://github.com/Sembiance/node-mhash/raw/master/LICENSE" } ],
-  "repository": { "type": "git", "url": "http://github.com/Sembiance/node-mhash.git" },
-  "scripts": { "test": "node test.js" }
+  "repository": { "type": "git", "url": "http://github.com/Sembiance/node-mhash.git" }
 }
