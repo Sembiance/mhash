@@ -1,5 +1,5 @@
 { "name": "mhash",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "author": "Robert Schultz <robert@cosmicrealms.com>",
   "description": "Provides 27 hashing algorithms: md5, md4, md2, sha1, sha256, whirlpool, crc32, etc. MacOS X requires Xcode to be installed.",
   "main": "index",

@@ -28,8 +28,8 @@ void reverse_bytes(unsigned char * start, unsigned long len)
 
 char * convert_to_hex(unsigned char * hash_data, unsigned long len)
 {
-	char *	converted;
-	int		i;
+	char *			converted;
+	unsigned long	i;
 
 	converted = (char *)malloc((len*2)+1);
 	memset(converted, 0, (len*2)+1);
@@ -130,7 +130,7 @@ Handle<Value> hash_binding(const Arguments& args)
 {
 	HandleScope 	scope;
 	Local<String> 	ret;
-	char *			hashed;
+	char *			hashed=0;
 	hashid			type=(hashid)-1;
 
 	String::Utf8Value 	name(args[0]->ToString());
