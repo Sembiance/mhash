@@ -131,7 +131,7 @@ Handle<Value> hash_binding(const Arguments& args)
 	HandleScope 	scope;
 	Local<String> 	ret;
 	char *			hashed=0;
-	hashid			type=(hashid)-1;
+	hashid			type;
 
 	String::Utf8Value 	name(args[0]->ToString());
 	type = get_hash_type_by_name(*name);
