@@ -19,3 +19,6 @@ deps/mhash/libtool
 deps/mhash/mhash.spec
 deps/mhash/node_libmhash_configure.out
 deps/mhash/src/driver
+test-code
+mhash.sublime-project
+mhash.sublime-workspace
