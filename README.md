@@ -9,8 +9,9 @@ NOTE: MacOS X users need to have XCode installed (provides gcc)
 Installation with NPM
 =====================
 
-npm install mhash
-
+```bash
+npm install mhash --python=python2
+```
 
 Usage
 =====
