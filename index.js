@@ -1,1 +1,1 @@
-exports.hash = require("bindings")("mhash.node").hash;
+module.exports = require("bindings")("mhash.node").hash;

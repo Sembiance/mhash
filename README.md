@@ -9,22 +9,24 @@ NOTE: MacOS X users need to have XCode installed (provides gcc)
 Installation with NPM
 =====================
 
-npm install mhash
-
+```bash
+npm install mhash --python=python2
+```
 
 Usage
 =====
-<pre>
-	Syntax: hash("algo-type", String || Buffer)
-	First argument is a string, one of the supported algorihms below.
-	Second argument can either be a String or a Buffer.
-</pre>
 
-<pre>
-var hash = require("mhash").hash;
+```javascript
+Syntax: hash("algo-type", String || Buffer)
+//First argument is a string, one of the supported algorihms below.
+//Second argument can either be a String or a Buffer.
+```
+
+```javascript
+var hash = require("mhash");
 
 console.log(hash("md2", "testing"));
-</pre>
+```
 
 
 Supported Hashing Algorithms
@@ -95,7 +97,8 @@ See [Issue #1](https://github.com/Sembiance/node-mhash/issues/1) for more detail
 Manual Installation
 ===================
 
-	git clone "https://github.com/Sembiance/node-mhash.git"
-	cd node-mhash
-    node-waf configure build
-
+```bash
+git clone "https://github.com/Sembiance/node-mhash.git"
+cd node-mhash
+node-waf configure build
+```
