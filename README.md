@@ -25,7 +25,7 @@ Syntax: hash("algo-type", String || Buffer)
 ```javascript
 var hash = require("mhash");
 
-console.log(mhash("md2", "testing"));
+console.log(hash("md2", "testing"));
 ```
 
 
