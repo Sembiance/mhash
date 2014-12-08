@@ -14,17 +14,18 @@ npm install mhash
 
 Usage
 =====
-<pre>
-	Syntax: hash("algo-type", String || Buffer)
-	First argument is a string, one of the supported algorihms below.
-	Second argument can either be a String or a Buffer.
-</pre>
 
-<pre>
-var hash = require("mhash").hash;
+```javascript
+Syntax: hash("algo-type", String || Buffer)
+//First argument is a string, one of the supported algorihms below.
+//Second argument can either be a String or a Buffer.
+```
 
-console.log(hash("md2", "testing"));
-</pre>
+```javascript
+var hash = require("mhash");
+
+console.log(mhash("md2", "testing"));
+```
 
 
 Supported Hashing Algorithms
@@ -95,7 +96,8 @@ See [Issue #1](https://github.com/Sembiance/node-mhash/issues/1) for more detail
 Manual Installation
 ===================
 
-	git clone "https://github.com/Sembiance/node-mhash.git"
-	cd node-mhash
-    node-waf configure build
-
+```bash
+git clone "https://github.com/Sembiance/node-mhash.git"
+cd node-mhash
+node-waf configure build
+```
