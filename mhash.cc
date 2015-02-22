@@ -1,17 +1,15 @@
+#include <nan.h>
+
 #ifdef __APPLE__
  #include <stdbool.h>
 #endif
 
-#include <v8.h>
 #include <mhash.h>
-#include <node.h>
-#include <node_buffer.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
 using namespace v8;
-using namespace node;
 
 void reverse_bytes(unsigned char * start, unsigned long len)
 {
@@ -126,9 +124,9 @@ hashid get_hash_type_by_name(char * name)
 	return (hashid)-1;
 }
 
-Handle<Value> hash_binding(const Arguments& args)
+NAN_METHOD(Hash)
 {
-	HandleScope 	scope;
+	NanScope();
 	Local<String> 	ret;
 	char *			hashed=0;
 	hashid			type;
@@ -136,35 +134,31 @@ Handle<Value> hash_binding(const Arguments& args)
 	String::Utf8Value 	name(args[0]->ToString());
 	type = get_hash_type_by_name(*name);
 	if(type==(hashid)-1)
-		return Null();
+		NanReturnValue(NanNull());
 
 	if(args[1]->IsString())
 	{
 		String::Utf8Value 	data(args[1]->ToString());
 		hashed = hash(type, (unsigned char *)*data, data.length());
 	}
-	else if(Buffer::HasInstance(args[1]))
+	else if(node::Buffer::HasInstance(args[1]))
 	{
 		Handle<Object> data = args[1]->ToObject();
-		hashed = hash(type, (unsigned char *)Buffer::Data(data), Buffer::Length(data));
+		hashed = hash(type, (unsigned char *)node::Buffer::Data(data), node::Buffer::Length(data));
 	}
 
 	if(!hashed)
-		return Null();
+		NanReturnValue(NanNull());
 
-	ret = String::New(hashed);
+	ret = NanNew<String>(hashed);
 	free(hashed);
 
-	return scope.Close(ret);
+	NanReturnValue(ret);
 }
 
-extern "C" void init(Handle<Object> target)
+void Init(Handle<Object> exports)
 {
-	HandleScope		scope;
-
-	target->Set(String::New("hash"), FunctionTemplate::New(hash_binding)->GetFunction());
+	exports->Set(NanNew("hash"), NanNew<FunctionTemplate>(Hash)->GetFunction());
 }
 
-#ifdef NODE_MODULE
-    NODE_MODULE(mhash, init)
-#endif
+NODE_MODULE(mhash, Init)

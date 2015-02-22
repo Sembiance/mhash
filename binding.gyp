@@ -4,7 +4,7 @@
 		{
 			"target_name": "mhash",
 			"sources": [ "mhash.cc" ],
-			"include_dirs" : [ "deps/mhash/include"],
+			"include_dirs" : [ "deps/mhash/include", "<!(node -e \"require('nan')\")"],
 			"dependencies" : [ "libmhash" ],
 			"libraries" : [ "<(module_root_dir)/deps/mhash/lib/.libs/libmhash.a" ]
 		},
