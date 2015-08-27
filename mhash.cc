@@ -126,39 +126,44 @@ hashid get_hash_type_by_name(char * name)
 
 NAN_METHOD(Hash)
 {
-	NanScope();
 	Local<String> 	ret;
 	char *			hashed=0;
 	hashid			type;
 
-	String::Utf8Value 	name(args[0]->ToString());
+	String::Utf8Value 	name(info[0]->ToString());
 	type = get_hash_type_by_name(*name);
 	if(type==(hashid)-1)
-		NanReturnValue(NanNull());
-
-	if(args[1]->IsString())
 	{
-		String::Utf8Value 	data(args[1]->ToString());
+		info.GetReturnValue().Set(Nan::Null());
+		return;
+	}
+
+	if(info[1]->IsString())
+	{
+		String::Utf8Value 	data(info[1]->ToString());
 		hashed = hash(type, (unsigned char *)*data, data.length());
 	}
-	else if(node::Buffer::HasInstance(args[1]))
+	else if(node::Buffer::HasInstance(info[1]))
 	{
-		Handle<Object> data = args[1]->ToObject();
+		Handle<Object> data = info[1]->ToObject();
 		hashed = hash(type, (unsigned char *)node::Buffer::Data(data), node::Buffer::Length(data));
 	}
 
 	if(!hashed)
-		NanReturnValue(NanNull());
+	{
+		info.GetReturnValue().Set(Nan::Null());
+		return;
+	}
 
-	ret = NanNew<String>(hashed);
+	ret = Nan::New(hashed).ToLocalChecked();
 	free(hashed);
 
-	NanReturnValue(ret);
+	info.GetReturnValue().Set(ret);
 }
 
 void Init(Handle<Object> exports)
 {
-	exports->Set(NanNew("hash"), NanNew<FunctionTemplate>(Hash)->GetFunction());
+	exports->Set(Nan::New("hash").ToLocalChecked(), Nan::New<FunctionTemplate>(Hash)->GetFunction());
 }
 
 NODE_MODULE(mhash, Init)
