@@ -98,7 +98,7 @@ Manual Installation
 ===================
 
 ```bash
-git clone "https://github.com/Sembiance/node-mhash.git"
-cd node-mhash
-node-waf configure build
+git clone "https://github.com/Sembiance/mhash.git"
+cd mhash
+node-gyp configure build
 ```
