@@ -21,6 +21,12 @@
 #if !defined(__MUTILS_H)
 #define __MUTILS_H
 
+// Added to satisfy OS X
+#if !defined(_Bool)
+#define _Bool bool
+#endif
+// End custom addition
+
 #include <mutils/mincludes.h>
 
 #if defined(const)
