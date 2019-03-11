@@ -1,6 +1,6 @@
 "use strict";
 
-var hash = require("./index"),
+const hash = require("./index"),
 	path = require("path"),
 	fs = require("fs");
 
