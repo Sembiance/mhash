@@ -22,3 +22,4 @@ deps/mhash/src/driver
 test-code
 mhash.sublime-project
 mhash.sublime-workspace
+pnpm-lock.yaml
