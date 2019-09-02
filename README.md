@@ -13,6 +13,12 @@ Installation with NPM
 npm install mhash --python=python2
 ```
 
+May need to manually run first to build mhash dep:
+```
+./libmhash-config.sh
+./libmhash-build.sh
+```
+
 Usage
 =====
 
