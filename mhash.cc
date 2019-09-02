@@ -64,7 +64,7 @@ char * hash(hashid hashType, unsigned char * data, unsigned long len)
 	return converted;
 }
 
-hashid get_hash_type_by_name(char * name)
+hashid get_hash_type_by_name(const char * name)
 {
 	if(strcasecmp(name, "crc32")==0)
 		return MHASH_CRC32;
@@ -130,8 +130,8 @@ NAN_METHOD(Hash)
 	char *			hashed=0;
 	hashid			type;
 
-	String::Utf8Value 	name(info[0]->ToString());
-	type = get_hash_type_by_name(*name);
+	std::string name = *Nan::Utf8String(info[0]);
+	type = get_hash_type_by_name(name.c_str());
 	if(type==(hashid)-1)
 	{
 		info.GetReturnValue().Set(Nan::Null());
@@ -140,13 +140,13 @@ NAN_METHOD(Hash)
 
 	if(info[1]->IsString())
 	{
-		String::Utf8Value 	data(info[1]->ToString());
-		hashed = hash(type, (unsigned char *)*data, data.length());
+		std::string data = *Nan::Utf8String(info[1]);
+		hashed = hash(type, (unsigned char *)data.c_str(), data.length());
 	}
 	else if(node::Buffer::HasInstance(info[1]))
 	{
-		Handle<Object> data = info[1]->ToObject();
-		hashed = hash(type, (unsigned char *)node::Buffer::Data(data), node::Buffer::Length(data));
+		MaybeLocal<Object> data = info[1]->ToObject(Isolate::GetCurrent()->GetCurrentContext());
+		hashed = hash(type, (unsigned char *)node::Buffer::Data(data.ToLocalChecked()), node::Buffer::Length(data.ToLocalChecked()));
 	}
 
 	if(!hashed)
@@ -161,9 +161,9 @@ NAN_METHOD(Hash)
 	info.GetReturnValue().Set(ret);
 }
 
-void Init(Handle<Object> exports)
+NAN_MODULE_INIT(Init)
 {
-	exports->Set(Nan::New("hash").ToLocalChecked(), Nan::New<FunctionTemplate>(Hash)->GetFunction());
+	Nan::Set(target, Nan::New<String>("hash").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(Hash)).ToLocalChecked());
 }
 
 NODE_MODULE(mhash, Init)
