@@ -1,3 +1,8 @@
+DEPRECATED
+==========
+
+I HIGHLY advise using the built in nodejs crypto.createHash() function instead of mhash.
+
 Description
 ===========
 
